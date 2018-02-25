@@ -28,7 +28,17 @@ class MiddlemanKomponent < ::Middleman::Extension
     def component(component_name, locals = {}, &block)
       capture_block = Proc.new { capture(&block) } if block
 
-      partial("components/#{component_name}/#{component_name}", locals: locals, &capture_block)
+      require_relative(app.root + "/frontend/components/#{component_name}/#{component_name}_component")
+      component_module = "#{component_name}_component".classify.constantize
+      @app.template_context_class.class_eval do
+        include component_module
+      end
+
+      path = app.root + "/frontend/components/#{component_name}/_#{component_name}.slim"
+
+      content_renderer = ::Middleman::FileRenderer.new(@app, path)
+      content = content_renderer.render(locals, {}, @app.generic_template_context, &capture_block)
+      content
     end
 
     alias c component
