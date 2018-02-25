@@ -1,7 +1,18 @@
+# If you do not have OpenSSL installed, update
+# the following line to use "http://" instead
 source 'https://rubygems.org'
 
-gem 'middleman', '~> 4.2'
-gem 'middleman-autoprefixer', '~> 2.7'
-gem "middleman-livereload", "~> 3.4.3"
-gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
-gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
+# Specify your gem's dependencies in middleman-komponent.gemspec
+gemspec
+
+group :development do
+  gem 'rake'
+  gem 'rdoc'
+  gem 'yard'
+end
+
+group :test do
+  gem 'cucumber'
+  gem 'aruba'
+  gem 'rspec'
+end
