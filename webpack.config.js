@@ -28,10 +28,11 @@ module.exports = {
           use: [
             { loader: "css-loader", options: { importLoaders: 1 } },
             "postcss-loader"
-          ]
+          ],
+          publicPath: __dirname + "/source/stylesheets/site.scss"
         })
       }
     ]
   },
-  plugins: [new ExtractTextPlugin(__dirname + "/source/stylesheets/site.css")]
+  plugins: [new ExtractTextPlugin("stylesheets/site.css")]
 };
