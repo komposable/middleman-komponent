@@ -48,11 +48,3 @@ activate :external_pipeline,
   command: build? ? './node_modules/webpack/bin/webpack.js --bail' : './node_modules/webpack/bin/webpack.js --watch -d  --progress --color',
   source: ".tmp/dist",
   latency: 1
-
-helpers do
-  def render_component(component_name, locals = {}, &block)
-    capture_block = Proc.new { capture(&block) } if block
-
-    partial("components/#{component_name}/#{component_name}", locals: locals, &capture_block)
-  end
-end

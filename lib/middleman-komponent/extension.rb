@@ -2,7 +2,7 @@
 require 'middleman-core'
 
 # Extension namespace
-class MyExtension < ::Middleman::Extension
+class MiddlemanKomponent < ::Middleman::Extension
   option :my_option, 'default', 'An example option'
 
   def initialize(app, options_hash={}, &block)
@@ -24,8 +24,13 @@ class MyExtension < ::Middleman::Extension
   # def manipulate_resource_list(resources)
   # end
 
-  # helpers do
-  #   def a_helper
-  #   end
-  # end
+  helpers do
+    def component(component_name, locals = {}, &block)
+      capture_block = Proc.new { capture(&block) } if block
+
+      partial("components/#{component_name}/#{component_name}", locals: locals, &capture_block)
+    end
+
+    alias c component
+  end
 end
