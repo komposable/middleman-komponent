@@ -6,7 +6,7 @@
 
 Follow Middleman documentation to [Start a New Site](https://middlemanapp.com/basics/start-new-site/).
 
-Then, add middleman-komponent to you Gemfile:
+Then, add middleman-komponent to your Gemfile:
 
 ```ruby
 # Gemfile
