@@ -43,7 +43,7 @@ page '/*.txt', layout: false
 
 activate :external_pipeline,
   name: :webpack,
-  command: "./node_modules/webpack/bin/webpack.js --watch -d --progress --color",
+  command: build? ? './node_modules/webpack/bin/webpack.js --bail' : './node_modules/webpack/bin/webpack.js --watch -d  --progress --color',
   source: ".tmp/dist",
   latency: 1
 
@@ -54,4 +54,3 @@ helpers do
     partial("components/#{component_name}/#{component_name}", locals: locals, &capture_block)
   end
 end
-
