@@ -48,8 +48,10 @@ activate :external_pipeline,
   latency: 1
 
 helpers do
-  def render_component(component_name)
-    partial "components/#{component_name}/#{component_name}"
+  def render_component(component_name, locals = {}, &block)
+    capture_block = Proc.new { capture(&block) } if block
+
+    partial("components/#{component_name}/#{component_name}", locals: locals, &capture_block)
   end
 end
 
