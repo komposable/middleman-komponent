@@ -6,4 +6,6 @@ title: Welcome to Middleman
   Middleman is Running
 </h1>
 
-<%= render_component("button") %>
+<% render_component "button", href: "#" do %>
+  CLICK HERE
+<% end %>
