@@ -1,6 +1,9 @@
 require "middleman-core"
+require "middleman-komponent/version"
 
-Middleman::Extensions.register :komponent do
+::Middleman::Extensions.register(:komponent) do
   require "middleman-komponent/extension"
-  MiddlemanKomponent
+  require "middleman-komponent/commands/component"
+
+  ::Middleman::MiddlemanKomponent
 end

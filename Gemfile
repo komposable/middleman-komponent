@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in middleman-komponent.gemspec
 gemspec
 
+gem "middleman-cli"
+gem "middleman-core"
+
 group :development do
   gem 'rake'
   gem 'rdoc'
